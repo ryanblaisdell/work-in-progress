@@ -1,0 +1,117 @@
+{{block "index" .}}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Ryan Resume using HTMX and GO</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="https://unpkg.com/htmx.org@2.0.1/dist/htmx.js"></script>
+        <link rel="stylesheet" type="text/css" href="/static/styles.css">
+    </head>
+    <body>
+        <h1 id="header"> Ryan Blaisdell's Web Page using HTMX and GO </h1>
+        <div class="navbar">
+            <a hx-target="#body-div" hx-post="/home">Home</a>
+            <a hx-target="#body-div" hx-post="/about">About</a>
+            <a hx-target="#body-div" hx-post="/resume">Resume</a>
+            <a hx-target="#body-div" hx-post="/contact">Contact</a>
+        </div>
+        <div id="body-div">
+            <!-- this is the DIV that will be replaced by the post calls made above -->
+        </div>
+    </body>
+</html>
+{{end}}
+
+{{block "home" .}}
+    <h2>Home</h2>
+    <p>Welcome to the home page of the Sample Web Page.</p>
+{{end}}
+
+{{block "about" .}}
+    <h2>About</h2>
+    <p>This is a web page sample using HTMX made by Ryan Blaisdell</p>
+    <p>- made on August 10th, 2024</p>    
+{{end}}
+
+{{block "resume" .}}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ryan Blaisdell - Resume</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Ryan Blaisdell</h1>
+        <div class="contact-info">
+            <p>607 Shaw Ave, Glassboro, NJ 08028</p>
+            <p><a href="mailto:blaisd75@rowan.edu">blaisd75@rowan.edu</a> | <a href="mailto:blaisdell.ryan11@gmail.com">blaisdell.ryan11@gmail.com</a></p>
+            <p><a href="https://www.linkedin.com/in/ryanblaisdell">LinkedIn</a> | <a href="https://github.com/ryanblaisdell">GitHub</a></p>
+        </div>
+
+        <h2>Education</h2>
+        <p><strong>Rowan University</strong>, Glassboro, NJ<br>
+        Bachelor of Science in Computer Science w/ Concentration in Software Engineering<br>
+        Sep. 2021 – Dec. 2024</p>
+
+        <h2>Experience</h2>
+        <h3>Software Development Engineering Intern — Mitchell International | Remote</h3>
+        <p>May 2024 - Aug. 2024</p>
+        <ul>
+            <li>Contributed to front-end and back-end development, testing user interfaces with TypeScript and Playwright, and refactoring C# code to integrate Entity Framework while writing unit tests for improved system reliability.</li>
+            <li>Enhanced Object-Oriented Programming (OOP) skills and gained expertise in the company’s front-end stack, including React, TypeScript, and Redux, through active project involvement.</li>
+            <li>Collaborated in a professional environment using Teams, practicing Agile methodology to ensure efficient and effective project delivery.</li>
+        </ul>
+
+        <h2>Projects</h2>
+        <h3>Race Day Mobile Application - RunSignUp | JavaScript, React Native, GitHub</h3>
+        <p>Jan. 2024</p>
+        <ul>
+            <li>Utilized agile methodology and the company’s API to fetch user data, allowing users to upload photos and videos, and create new albums.</li>
+            <li>Integrated the YouTube API to enable users to live stream through YouTube, enhancing user engagement and interactivity.</li>
+            <li>The entire project was developed in JavaScript and React Native, showcasing a versatile application of modern web technologies.</li>
+            <li>Version control was managed through a GitHub repository.</li>
+        </ul>
+
+        <h2>Career Objective</h2>
+        <p>Detail-oriented and highly motivated Computer Science student with a strong academic foundation and a passion for technology. Eager to secure a challenging position where I can apply my programming skills, problem-solving abilities, and collaborative mindset to contribute to innovative projects. Seeking an opportunity to gain hands-on experience, deepen my understanding of software development methodologies, and work alongside experienced professionals in a dynamic and growth-oriented environment.</p>
+
+        <h2>Technical Skills</h2>
+        <ul class="skills">
+            <li>Experienced with using GitHub for version control, facilitating team collaboration, code reviews, and managing my own/other team members' PRs.</li>
+            <li>Proficient in automated testing using Playwright and unit tests, working with SQL databases, and designing and consuming RESTful APIs.</li>
+            <li>Solid understanding of Data Structures and Algorithms, enhancing problem-solving in software development.</li>
+            <li><strong>Languages:</strong> TypeScript/JavaScript, Java, C#, HTML/CSS, SQL, Python</li>
+            <li><strong>Developer Tools:</strong> Postman, SQL Server, Visual Studio Code, Visual Studio, GitHub Desktop</li>
+            <li><strong>Technologies/Frameworks:</strong> Linux, React, Redux, Playwright</li>
+            <li><strong>Soft Skills:</strong> Team collaboration, Agile/Scrum methodology, Quick Learner, Eager to learn</li>
+        </ul>
+
+        <h2>Relevant Coursework</h2>
+        <ul class="coursework">
+            <li>Software Engineering</li>
+            <li>Cybersecurity Fundamentals</li>
+            <li>Data Structures and Algorithms</li>
+            <li>Operating Systems</li>
+            <li>Design and Analysis of Algorithms</li>
+            <li>Database Systems</li>
+            <li>Computer Architecture</li>
+        </ul>
+
+        <h2>Extracurricular</h2>
+        <ul class="extracurricular">
+            <li>Currently a member of the Rowan University Cybersecurity Club.</li>
+            <li>Independently built and configured custom computers for personal use and for others.</li>
+        </ul>
+    </div>
+</body>
+{{end}}
+
+{{block "contact" .}}
+    <h2>About</h2>
+    <p>Feel free to contact me at:</p>
+    <ul>
+        <li>Email: blaisdell.ryan11@gmail.com</li>
+        <li>Linkedin: ryanblaisdell</li> 
+    </ul> 
+{{end}}
