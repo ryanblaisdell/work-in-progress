@@ -1,7 +1,16 @@
-/* Add some basic styling for the navigation bar */
+body {
+    background-color: rgb(218, 218, 218);
+    color: black;
+    padding: 1;
+    margin: 1;
+    border-radius: 8px;
+    font-size: 1.5em;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Set the font to Segoe UI */
+}
+
 #header {
     background-color: #333;
-    color: white;
+    color: rgb(167, 167, 167);
     text-align: center;
     padding: 1em;
 }
@@ -9,12 +18,22 @@
 .navbar {
     overflow: hidden;
     background-color: #333;
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Center the navbar content */
+    padding: 0 20px;
+    position: relative;
+}
+
+.navbar-left {
+    display: flex;
+    gap: 20px;
+    justify-content: center; /* Center the anchors */
 }
 
 .navbar a {
-    float: left;
     display: block;
-    color: #f2f2f2;
+    color: rgb(167, 167, 167);
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
@@ -23,4 +42,67 @@
 .navbar a:hover {
     background-color: #ddd;
     color: black;
+}
+
+.navbar-right {
+    display: flex;
+    gap: 10px;
+    margin-left: auto; /* Pushes the navbar-right to the far right */
+}
+
+#home-page {
+    background-color: rgb(240, 240, 240);
+    color: black;
+    text-align: center;
+    padding: 20px; /* Add padding for better spacing */
+    margin: 20px; /* Add margin for better spacing */
+    border-radius: 8px;
+    font-size: 1.5em;
+    margin-top: 30px;
+    min-height: 350px;
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    flex-direction: column;
+}
+
+#home-page h2 {
+    margin-top: 0; /* Remove top margin */
+}
+
+#home-content {
+    background-color: rgb(240, 240, 240);
+    color: black;
+    text-align: center;
+    padding: 20px; /* Add padding for better spacing */
+    margin: 20px; /* Add margin for better spacing */
+    border-radius: 8px;
+    font-size: 1.5em;
+    margin-top: 30px;
+    min-height: 350px;
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    flex-direction: column;
+}
+
+#modal {
+    display: none; /* Hide the modal initially */
+    position: fixed; /* Change to fixed to overlay on top */
+    left: 50%; /* Center horizontally */
+    top: 50%; /* Center vertically */
+    transform: translate(-50%, -50%); /* Adjust for centering */
+    width: 700px;
+    height: 100px;
+    z-index: 1001 !important; /* Ensure it is on top */
+    background-color: white; /* Add background color for visibility */
+    border: 1px solid #ccc; /* Optional: Add border for better visibility */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add shadow for better visibility */
+    padding: 20px; /* Optional: Add padding for better spacing */
+    border-radius: 8px;
+}
+
+.blur {
+    filter: blur(5px); /* Apply blur effect */
+    pointer-events: none; /* Disable interactions with blurred content */
 }

@@ -6,26 +6,67 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <script src="https://unpkg.com/htmx.org@2.0.1/dist/htmx.js"></script>
-        <link rel="stylesheet" type="text/css" href="/static/styles.css">
+        <script src="https://unpkg.com/hyperscript.org@0.9.12"></script>
+        <link rel="stylesheet" type="text/css" href="/static/styles.css?id=1234">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     </head>
     <body>
-        <h1 id="header"> Ryan Blaisdell's Web Page using HTMX and GO </h1>
-        <div class="navbar">
-            <a hx-target="#body-div" hx-post="/home">Home</a>
-            <a hx-target="#body-div" hx-post="/about">About</a>
-            <a hx-target="#body-div" hx-post="/resume">Resume</a>
-            <a hx-target="#body-div" hx-post="/contact">Contact</a>
-        </div>
-        <div id="body-div">
-            <!-- this is the DIV that will be replaced by the post calls made above -->
+        <div id="main-page">
+            <h1 id="header"> Ryan Blaisdell's Web Page using HTMX and GO </h1>
+            <div id= "main-navbar" class="navbar">
+                <div class="navbar-left">
+                    <a hx-target="#body-div" hx-post="/home">Home</a>
+                    <a hx-target="#body-div" hx-post="/about">About</a>
+                    <a hx-target="#body-div" hx-post="/resume">Resume</a>
+                    <a hx-target="#body-div" hx-post="/contact">Contact</a>
+                </div>
+                <div class="navbar-right">
+                    <a id="search-icon" hx-get="/modal-content" hx-target="#modal" hx-trigger="click"><i class="fa fa-search"></i></a>
+                    <a hx-target="#body-div" hx-post="/login">Login</a>
+                </div>
+            </div>
+                
+            <div id="body-div">
+                <!-- this is the DIV that will be replaced by the post calls made above -->
+                <!-- for now the home page will be initially displayed upon opening the web page -->
+                {{ template "home" . }}
+            </div>
+                
+            <!-- modal container -->
+            <div id="modal"></div>
+                
+            <script>
+                document.getElementById('search-icon').addEventListener('click', function() {
+                    document.getElementById('modal').style.display = 'block';
+                    document.getElementById('main-content').classList.add('blur');
+                });
+                
+                document.addEventListener('htmx:afterOnLoad', function(event) {
+                    if (event.target.id === 'modal') {
+                        document.getElementById('close-modal').addEventListener('click', function(event) {
+                            event.preventDefault(); 
+                            document.getElementById('modal').style.display = 'none';
+                            document.getElementById('main-content').classList.remove('blur');
+                            document.getElementById('modal').innerHTML = '';
+                        });
+                    }
+                });
+            </script>
         </div>
     </body>
 </html>
 {{end}}
 
 {{block "home" .}}
-    <h2>Home</h2>
-    <p>Welcome to the home page of the Sample Web Page.</p>
+    <div id="home-page">
+        <h2>Transform your life.</h2>
+        <p>Work in progress. This will be some sort of website.</p>
+    </div>
+    <div id="home-content">
+        <h2>What is this?</h2>
+        <p>This will be something and it will have content.</p>
+    </div>
 {{end}}
 
 {{block "about" .}}
@@ -114,4 +155,15 @@
         <li>Email: blaisdell.ryan11@gmail.com</li>
         <li>Linkedin: ryanblaisdell</li> 
     </ul> 
+{{end}}
+
+{{block "login" .}}
+    <h1>This will be the login.</h1>
+{{end}}
+
+{{block "modal-content" .}}
+    <div>
+        <p>This will be a search bar to navigate the website</p>
+        <a id="close-modal" _="on click remove #modal">X</a>
+    </div>
 {{end}}
